@@ -1,5 +1,121 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model SistemaOS.Models.OrdemServico
+
+@{ ViewData["Title"] = "Cadastrar"; }
+
+<h2>Editar Ordem Serviço</h2>
+
+<hr />
+
+<head>
+    <script type='text/javascript' src='//code.jquery.com/jquery-compat-git.js'></script>
+    <script type='text/javascript' src='//igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js'></script>
+</head>
+
+@using (Html.BeginForm("ConfirmaEdicao", "OrdemServico", FormMethod.Post))
+{
+
+<div class="container-fluid mt-4">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="form-group">
+                @Html.LabelFor(model => model.NumeroOS, new { @class = "control-label col-sm-12" })
+                <div class="col-sm-12">
+                    @Html.EditorFor(model => model.NumeroOS, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NumeroOS, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+                @Html.LabelFor(model => model.TituloServico, new { @class = "control-label col-sm-12" })
+                <div class="col-sm-12">
+                    @Html.EditorFor(model => model.TituloServico, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TituloServico, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+                @Html.LabelFor(model => model.CNPJCliente, new { @class = "control-label col-sm-12" })
+                <div class="col-sm-12">
+                    @Html.EditorFor(model => model.CNPJCliente, new { htmlAttributes = new { @class = "form-control", @id = "CNPJ" } })
+                    @Html.ValidationMessageFor(model => model.CNPJCliente, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+                @Html.LabelFor(model => model.NomeCliente, new { @class = "control-label col-sm-12" })
+                <div class="col-sm-12">
+                    @Html.EditorFor(model => model.NomeCliente, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NomeCliente, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="form-group">
+                @Html.LabelFor(model => model.CPFPrestador, new { @class = "control-label col-sm-12" })
+                <div class="col-sm-12">
+                    @Html.EditorFor(model => model.CPFPrestador, new { htmlAttributes = new { @class = "form-control", @id = "CPF" } })
+                    @Html.ValidationMessageFor(model => model.CPFPrestador, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+                @Html.LabelFor(model => model.NomePrestador, new { @class = "control-label col-sm-12" })
+                <div class="col-sm-12">
+                    @Html.EditorFor(model => model.NomePrestador, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NomePrestador, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Valor, new { @class = "control-label col-sm-12" })
+                <div class="col-sm-12">
+                    @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control", @id = "Valor" } })
+                    @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+                @Html.LabelFor(model => model.DataExecucao, new { @class = "control-label col-sm-12" })
+                <div class="col-sm-12">
+
+                    @Html.TextBoxFor(model => model.DataExecucao, "{0:dd/MM/yyyy}", new { @class = "form-control", @id = "Data", autocomplete = "off" })
+                    @Html.ValidationMessageFor(model => model.DataExecucao, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="form-group col-lg-6">
+            <input type="submit" class="btn btn-success" data-loading-text="Cadastrando..." autocomplete="off" value="Editar" />
+            <a class="btn btn-danger" href="@Url.Action("Index", "OrdemServico")">Cancelar</a>
+        </div>
+    </div>
+</div>}
+
+
+<script>$('#Telefone').mask('(00) 00000 - 0000');
+
+    $('#Valor').mask('000.000.000.000.000,00', { reverse: true });
+
+    $("#Valor").change(function () {
+        $("#value").html($(this).val().replace(/\D/g, ''))
+    })
+
+    $("#Data").mask('00/00/0000');
+    $("#CPF").mask("999.999.999-99");
+    $("#CNPJ").mask("99.999.999/9999-99");</script>
+

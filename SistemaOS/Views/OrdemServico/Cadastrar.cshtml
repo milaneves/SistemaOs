@@ -89,7 +89,7 @@
                 @Html.LabelFor(model => model.DataExecucao, new { @class = "control-label col-sm-12" })
                 <div class="col-sm-12">
 
-                    @Html.EditorFor(model => model.DataExecucao, new { htmlAttributes = new { @class = "form-control Date" , @id="Data"} })
+                    @Html.TextBoxFor(model => model.DataExecucao, "{0:dd/MM/yyyy}", new { @class = "form-control", @id="Data", autocomplete = "off" })
                     @Html.ValidationMessageFor(model => model.DataExecucao, "", new { @class = "text-danger" })
                 </div>
             </div>

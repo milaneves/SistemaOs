@@ -72,12 +72,53 @@ namespace SistemaOS.Controllers
 
                 _ordemServicoRepositorio.Create(ordem);
 
-                return RedirectToAction(nameof(ConsultarAnimal));
+                return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
+
+        public IActionResult Editar(int id)
+        {
+            OrdemServico ordem = _ordemServicoRepositorio.GetById(id);
+            return View(ordem);
+        }
+
+        [HttpPost]
+        public IActionResult ConfirmarEdicao(OrdemServico _ordem, int id)
+        {
+            OrdemServico ordemSelecionada = _ordemServicoRepositorio.GetById(id);
+
+            if (_ordem == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                ordemSelecionada.NumeroOS = _ordem.NumeroOS;
+                ordemSelecionada.TituloServico = _ordem.TituloServico;
+                ordemSelecionada.NomeCliente = _ordem.NomeCliente;
+                ordemSelecionada.CNPJCliente = _ordem.CNPJCliente;
+                ordemSelecionada.CPFPrestador = _ordem.CPFPrestador;
+                ordemSelecionada.NomePrestador = _ordem.NomePrestador;
+                ordemSelecionada.Valor = _ordem.Valor;
+                ordemSelecionada.DataExecucao = _ordem.DataExecucao;
+            
+
+                _ordemServicoRepositorio.Update(ordemSelecionada)
+
+
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }
