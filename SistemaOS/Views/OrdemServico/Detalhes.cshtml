@@ -1,8 +1,8 @@
 ﻿@model SistemaOS.Models.OrdemServico
 
-@{ ViewData["Title"] = "Deletar"; }
+@{ ViewData["Title"] = "Detalhe"; }
 
-<h3>Deseja remover a ordem de serviço?</h3>
+<h3>Ordem de Serviço?</h3>
 <hr />
 
 <div>
@@ -47,9 +47,9 @@
 
     </dl>
 
-    <form action="@Url.Action("ConfirmarDelete", "OrdemServico")" method="post">
-        <input type="hidden" asp-for="Id" />
-        <a class="btn btn-primary" href="@Url.Action("Index", "OrdemServico")"> Voltar</a>
-        <input type="submit" value="Delete" class="btn btn-danger" />
-    </form>
+    <div class="form-group">
+        <div class="form-group col-lg-6">
+            <a class="btn btn-primary" href="@Url.Action("Index", "OrdemServico")">Voltar</a>
+        </div>
+    </div>
 </div>

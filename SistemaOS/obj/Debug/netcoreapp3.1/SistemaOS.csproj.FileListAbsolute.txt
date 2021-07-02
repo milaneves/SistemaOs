@@ -152,3 +152,4 @@ C:\Users\t-msantos\Documents\SistemaOS\SistemaOS\obj\Debug\netcoreapp3.1\Razor\V
 C:\Users\t-msantos\Documents\SistemaOS\SistemaOS\obj\Debug\netcoreapp3.1\Razor\Views\OrdemServico\Index.cshtml.g.cs
 C:\Users\t-msantos\Documents\SistemaOS\SistemaOS\obj\Debug\netcoreapp3.1\Razor\Views\OrdemServico\Deletar.cshtml.g.cs
 C:\Users\t-msantos\Documents\SistemaOS\SistemaOS\obj\Debug\netcoreapp3.1\Razor\Views\OrdemServico\Editar.cshtml.g.cs
+C:\Users\t-msantos\Documents\SistemaOS\SistemaOS\obj\Debug\netcoreapp3.1\Razor\Views\OrdemServico\Detalhes.cshtml.g.cs

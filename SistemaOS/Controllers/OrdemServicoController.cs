@@ -29,7 +29,7 @@ namespace SistemaOS.Controllers
   
 
         [HttpPost]
-        public IActionResult ConsultarAnimal(Pesquisa pesquisa)
+        public IActionResult ConsultarOrdem(Pesquisa pesquisa)
         {
 
             var ordem = _ordemServicoRepositorio.GetByOs(pesquisa.numeroOs);
@@ -38,7 +38,7 @@ namespace SistemaOS.Controllers
                 return NotFound();
             }
 
-            return View("Consultar", ordem);
+            return View("Index", ordem);
         }
 
         public class Pesquisa
@@ -85,6 +85,7 @@ namespace SistemaOS.Controllers
             OrdemServico ordem = _ordemServicoRepositorio.GetById(id);
             return View(ordem);
         }
+   
 
         [HttpPost]
         public IActionResult ConfirmarEdicao(OrdemServico _ordem, int id)
@@ -106,9 +107,9 @@ namespace SistemaOS.Controllers
                 ordemSelecionada.NomePrestador = _ordem.NomePrestador;
                 ordemSelecionada.Valor = _ordem.Valor;
                 ordemSelecionada.DataExecucao = _ordem.DataExecucao;
-            
 
-                _ordemServicoRepositorio.Update(ordemSelecionada)
+
+                _ordemServicoRepositorio.Update(ordemSelecionada);
 
 
 
@@ -119,6 +120,53 @@ namespace SistemaOS.Controllers
                 throw new Exception(ex.Message);
             }
         }
+
+        public IActionResult Deletar(int id)
+        {
+            try
+            {
+
+                var ordem = _context.OrdemServico.FirstOrDefault(m => m.Id == id);
+
+                if (ordem == null)
+                {
+                    return NotFound();
+                }
+
+                return View(ordem);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult ConfirmarDelete(int id)
+        {
+            var ordem = _ordemServicoRepositorio.GetById(id);
+            if (ordem == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                _ordemServicoRepositorio.Delete(ordem);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public IActionResult Detalhes(int id)
+        {
+            OrdemServico ordem = _ordemServicoRepositorio.GetById(id);
+            return View(ordem);
+        }
+
 
     }
 }

@@ -16,15 +16,14 @@
 
     </div>
 </div>
-@using (Html.BeginForm("Consultar", "OrdemServico", FormMethod.Post))
+@using (Html.BeginForm("ConsultarOrdem", "OrdemServico", FormMethod.Post))
 {
 <div style="text-align: center;">
-    <input type="search" align="center" name="nomeDigitado" placeholder="informe o numero da ordem">
+    <input type="search" align="center" size="25" name="numeroOs" placeholder="informe o numero da ordem">
     <input type=submit class="btn btn-light" value=Procurar>
 </div>
-                <br />
-                <br />
-                <br />
+    <br />
+    <br />
         <table class="table">
             <thead>
                 <tr>
@@ -62,8 +61,9 @@
 
                 <td>
                     <div class="text-center">
-                        <a class="btn btn-danger" href="@Url.Action("ConfirmarDelete", "OrdemServico", new { id = item.Id })">Excluir</a>
-                        <a class="btn btn-warning" href="@Url.Action("ConfirmarEdicao", "OrdemServico", new { id = item.Id })">Editar</a>
+                        <a class="btn btn-danger" href="@Url.Action("Deletar", "OrdemServico", new { id = item.Id })">Excluir</a>
+                        <a class="btn btn-warning" href="@Url.Action("Editar", "OrdemServico", new { id = item.Id })">Editar</a>
+                        <a class="btn btn-primary" href="@Url.Action("Detalhes", "OrdemServico", new { id = item.Id })">Detalhes</a>
                     </div>
                 </td>
             </tr>}

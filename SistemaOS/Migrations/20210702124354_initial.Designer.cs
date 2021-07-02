@@ -10,8 +10,8 @@ using SistemaOS.Data;
 namespace SistemaOS.Migrations
 {
     [DbContext(typeof(SistemaOsContext))]
-    [Migration("20210701190513_inital")]
-    partial class inital
+    [Migration("20210702124354_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
